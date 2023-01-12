@@ -39,14 +39,15 @@ namespace PhoneNumberValidator
             // for invalid phone-number, function should return 0
             // for valid phone-number, function should return 1
 
-            string Expression = @"[0-9\-]{10}";
-            Regex regex = new Regex(Expression);
-
             if( input == null || input == "")
             {
                 return -1;
             }
-            if(regex.IsMatch(input))
+
+            string Expression = @"[d\-]{10}$";
+            Regex PhoneRegex = new Regex(Expression);
+            
+            if(PhoneRegex.IsMatch(input))
             {
                 return 1;
             }
