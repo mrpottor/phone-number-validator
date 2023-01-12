@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace PhoneNumberValidator
 {
@@ -8,15 +9,28 @@ namespace PhoneNumberValidator
         static void Main(string[] args)
         {
             // call the functions to validate phone number and display the status
+            string PhoneNumber = GetInput();
+            int result = ValidatePhoneNumber(PhoneNumber);
+            DisplayResult(result);
         }
         public static string GetInput()
         {
             // get phonenumber as input
-            return "";
+            string PhoneNumber = Console.ReadLine();
+            return PhoneNumber;
         }
         public static void DisplayResult(int result)
         {
             // display status of phone number valid or invalid
+            if (result == 1)
+            {
+                Console.WriteLine("Valid");
+            }
+            else
+            {
+                Console.WriteLine("Invalid");
+            }
+
         }
         public static int ValidatePhoneNumber(string input)
         {
@@ -24,8 +38,23 @@ namespace PhoneNumberValidator
             // for null or empty value, function should return -1
             // for invalid phone-number, function should return 0
             // for valid phone-number, function should return 1
-            return 0;
 
+            string Expression = @"[0-9\-]{10}";
+            Regex regex = new Regex(Expression);
+
+            if( input == null || input == "")
+            {
+                return -1;
+            }
+            if(regex.IsMatch(input))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+            
         }
     }
 }
