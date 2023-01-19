@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Text.RegularExpressions;
 
 namespace PhoneNumberValidator
@@ -39,7 +39,7 @@ namespace PhoneNumberValidator
             // for invalid phone-number, function should return 0
             // for valid phone-number, function should return 1
 
-            if( input == null || input == "")
+            if( input.IsNullOrEmpty())
             {
                 return -1;
             }
